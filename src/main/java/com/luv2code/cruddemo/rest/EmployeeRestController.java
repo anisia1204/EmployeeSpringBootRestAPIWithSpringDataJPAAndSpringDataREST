@@ -38,4 +38,10 @@ public class EmployeeRestController {
         employee.setId(0);
         return employeeService.save(employee); //it has updated id from the db(in the case of insert)
     }
+
+    // add mapping for PUT /employees - update existing employee
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee employee) { //the employee data is gonna come in as JSON in the request body
+        return employeeService.save(employee);
+    }
 }
