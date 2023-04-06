@@ -44,4 +44,14 @@ public class EmployeeRestController {
     public Employee updateEmployee(@RequestBody Employee employee) { //the employee data is gonna come in as JSON in the request body
         return employeeService.save(employee);
     }
+
+    // add mapping for DELETE /employees/{employeeId} - delete employee
+    @DeleteMapping("/employees/{employeeId}")
+    public String deleteEmployee(@PathVariable int employeeId) {
+        Employee employee = employeeService.findById(employeeId);
+        if(employee == null)
+            throw new RuntimeException("Employee id not found - " + employeeId);
+        employeeService.deleteById(employeeId);
+        return "Deleted employee id - " + employeeId;
+    }
 }
