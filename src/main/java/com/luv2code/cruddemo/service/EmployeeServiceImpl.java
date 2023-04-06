@@ -17,7 +17,6 @@ public class EmployeeServiceImpl implements EmployeeService{
         this.employeeRepository = employeeRepository;
     }
 
-    //just delegate the calls to the DAO, just calling the same methods on the given DAO
     @Override
     public List<Employee> findAll() {
         return employeeRepository.findAll();
